@@ -41,14 +41,24 @@ public class UsersController {
 	public UsersResponseDto getByUsername(@PathVariable String username) {
 		return usersService.getByUsername(username);
 	}
-	
+
 	@PatchMapping("/{username}")
 	public UsersResponseDto updateUser(@RequestBody UsersRequestDto usersDto) {
 		return usersService.updateUser(usersDto);
 	}
-	
+
 	@DeleteMapping("/{username}")
 	public UsersResponseDto deleteUser(@RequestBody Credentials credentials) {
 		return usersService.deleteUser(credentials);
+	}
+
+	@PostMapping("/{username}/follow")
+	public void followUser(Credentials credentials, String username) {
+		usersService.followUser(credentials, username);
+	}
+
+	@PostMapping("/{username}/unfollow")
+	public void unfollowUser(Credentials credentials, String username) {
+		usersService.unfollowUser(credentials, username);
 	}
 }

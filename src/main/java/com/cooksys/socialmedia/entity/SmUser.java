@@ -32,6 +32,12 @@ public class SmUser {
 	@OneToMany
 	private List<Tweet> tweets;
 
+	@OneToMany
+	private List<SmUser> following;
+
+	@OneToMany
+	private List<SmUser> followers;
+
 	// constructor
 	public SmUser() {
 
@@ -85,6 +91,22 @@ public class SmUser {
 
 	public void setTweets(List<Tweet> tweets) {
 		this.tweets = tweets;
+	}
+
+	public List<SmUser> getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(List<SmUser> following) {
+		this.following = following;
+	}
+
+	public List<SmUser> getFollowers() {
+		return followers;
+	}
+
+	public void setFollowers(List<SmUser> followers) {
+		this.followers = followers;
 	}
 
 }

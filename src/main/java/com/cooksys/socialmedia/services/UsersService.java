@@ -18,4 +18,8 @@ public interface UsersService {
 
 	UsersResponseDto deleteUser(Credentials credentials);
 
+	void followUser(Credentials credentials, String username);
+
+	void unfollowUser(Credentials credentials, String username);
+
 }

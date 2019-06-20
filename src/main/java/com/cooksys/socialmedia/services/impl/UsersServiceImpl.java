@@ -58,4 +58,25 @@ public class UsersServiceImpl implements UsersService {
 		return usersMapper.entityToDto(user);
 	}
 
+	@Override
+	public void followUser(Credentials credentials, String username) {
+		SmUser user = usersRepository.findUser(credentials.getUsername());
+		SmUser follow = usersRepository.findUser(username);
+		if (user.getCredentials().getPassword().equals(credentials.getPassword())) {
+			user.getFollowing().add(follow);
+		}
+		usersRepository.saveAndFlush(user);
+	}
+
+	@Override
+	public void unfollowUser(Credentials credentials, String username) {
+		SmUser user = usersRepository.findUser(credentials.getUsername());
+		SmUser unfollow = usersRepository.findUser(username);
+		if (user.getCredentials().getPassword().equals(credentials.getPassword())) {
+			user.getFollowing().remove(unfollow);
+		}
+		usersRepository.saveAndFlush(user);
+
+	}
+
 }

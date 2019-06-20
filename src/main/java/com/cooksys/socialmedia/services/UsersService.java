@@ -13,4 +13,6 @@ public interface UsersService {
 
 	UsersResponseDto getByUsername(String username);
 
+	UsersResponseDto updateUser(UsersRequestDto usersDto);
+
 }

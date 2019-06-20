@@ -3,6 +3,7 @@ package com.cooksys.socialmedia.controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,12 +31,17 @@ public class UsersController {
 	}
 
 	@GetMapping
-	public List<UsersResponseDto> getUsers(){
+	public List<UsersResponseDto> getUsers() {
 		return usersService.getUsers();
 	}
-	
+
 	@GetMapping("/{username}")
 	public UsersResponseDto getByUsername(@PathVariable String username) {
 		return usersService.getByUsername(username);
+	}
+	
+	@PatchMapping("/{username}")
+	public UsersResponseDto updateUser(@RequestBody UsersRequestDto usersDto) {
+		return usersService.updateUser(usersDto);
 	}
 }

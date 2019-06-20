@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.cooksys.socialmedia.dto.UsersRequestDto;
 import com.cooksys.socialmedia.dto.UsersResponseDto;
+import com.cooksys.socialmedia.entity.SmUser;
 import com.cooksys.socialmedia.mapper.UsersMapper;
 import com.cooksys.socialmedia.repository.UsersRepository;
 import com.cooksys.socialmedia.services.UsersService;
@@ -34,6 +35,16 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public UsersResponseDto getByUsername(String username) {
 		return usersMapper.entityToDto(usersRepository.findUser(username));
+	}
+
+	@Override
+	public UsersResponseDto updateUser(UsersRequestDto usersDto) {
+		SmUser user = usersRepository.findUser(usersDto.getCredentials().getUsername());
+		//if (user.getCredentials().equals(usersDto.getCredentials())) {
+			user.setProfile(usersDto.getProfile());
+	//}
+		usersRepository.saveAndFlush(user);
+		return usersMapper.entityToDto(user);
 	}
 
 }

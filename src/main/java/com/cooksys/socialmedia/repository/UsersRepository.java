@@ -14,7 +14,7 @@ public interface UsersRepository extends JpaRepository<SmUser, Integer>{
 	@Query("select s from SmUser s where s.active = true")
 	List<SmUser> findActiveUsers();
 	
-	@Query("select s from SmUser s where s.credentials.username = ?1")
+	@Query("select s from SmUser s where s.credentials.username = ?1 and s.active = true")
 	SmUser findUser(String username);
 	
 

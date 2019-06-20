@@ -2,6 +2,7 @@ package com.cooksys.socialmedia.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.socialmedia.dto.UsersRequestDto;
 import com.cooksys.socialmedia.dto.UsersResponseDto;
+import com.cooksys.socialmedia.entity.Credentials;
 import com.cooksys.socialmedia.services.UsersService;
 
 @RestController
@@ -43,5 +45,10 @@ public class UsersController {
 	@PatchMapping("/{username}")
 	public UsersResponseDto updateUser(@RequestBody UsersRequestDto usersDto) {
 		return usersService.updateUser(usersDto);
+	}
+	
+	@DeleteMapping("/{username}")
+	public UsersResponseDto deleteUser(@RequestBody Credentials credentials) {
+		return usersService.deleteUser(credentials);
 	}
 }

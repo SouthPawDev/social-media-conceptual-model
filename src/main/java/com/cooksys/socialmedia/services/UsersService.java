@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cooksys.socialmedia.dto.UsersRequestDto;
 import com.cooksys.socialmedia.dto.UsersResponseDto;
+import com.cooksys.socialmedia.entity.Credentials;
 
 public interface UsersService {
 
@@ -14,5 +15,7 @@ public interface UsersService {
 	UsersResponseDto getByUsername(String username);
 
 	UsersResponseDto updateUser(UsersRequestDto usersDto);
+
+	UsersResponseDto deleteUser(Credentials credentials);
 
 }

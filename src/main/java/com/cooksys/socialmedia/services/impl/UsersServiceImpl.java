@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.cooksys.socialmedia.dto.UsersRequestDto;
 import com.cooksys.socialmedia.dto.UsersResponseDto;
+import com.cooksys.socialmedia.entity.Credentials;
 import com.cooksys.socialmedia.entity.SmUser;
 import com.cooksys.socialmedia.mapper.UsersMapper;
 import com.cooksys.socialmedia.repository.UsersRepository;
@@ -42,6 +43,16 @@ public class UsersServiceImpl implements UsersService {
 		SmUser user = usersRepository.findUser(usersDto.getCredentials().getUsername());
 		if (user.getCredentials().getPassword().equals(usersDto.getCredentials().getPassword())) {
 			user.setProfile(usersDto.getProfile());
+		}
+		usersRepository.saveAndFlush(user);
+		return usersMapper.entityToDto(user);
+	}
+
+	@Override
+	public UsersResponseDto deleteUser(Credentials credentials) {
+		SmUser user = usersRepository.findUser(credentials.getUsername());
+		if (user.getCredentials().getPassword().equals(credentials.getPassword())) {
+			user.setActive(false);
 		}
 		usersRepository.saveAndFlush(user);
 		return usersMapper.entityToDto(user);

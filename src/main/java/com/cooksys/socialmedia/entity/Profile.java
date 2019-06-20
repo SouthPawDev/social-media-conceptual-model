@@ -15,12 +15,8 @@ public class Profile {
 	
 	private String phone;
 
-	public Profile(String firstName, String lastName, String email, String phone) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.phone = phone;
+	public Profile() {
+		
 	}
 
 	public String getFirstName() {

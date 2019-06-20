@@ -3,7 +3,6 @@ package com.cooksys.socialmedia.entity;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,15 +18,16 @@ public class Tweet {
 	private Integer id;
 
 	@ManyToOne
-	@Column(nullable = false)
 	private SmUser author;
 
 	private Timestamp posted;
 
 	private String content;
 
+	@ManyToOne
 	private Tweet inReplyTo;
 
+	@ManyToOne
 	private Tweet repostOf;
 
 	@ManyToMany

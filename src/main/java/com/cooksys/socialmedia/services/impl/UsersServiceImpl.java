@@ -1,4 +1,6 @@
-package com.cooksys.socialmedial.services.impl;
+package com.cooksys.socialmedia.services.impl;
+
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,6 @@ public class UsersServiceImpl implements UsersService {
 	private UsersMapper usersMapper;
 
 	public UsersServiceImpl(UsersRepository usersRepository, UsersMapper usersMapper) {
-
 		this.usersRepository = usersRepository;
 		this.usersMapper = usersMapper;
 	}
@@ -23,6 +24,16 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public UsersResponseDto createUser(UsersRequestDto usersDto) {
 		return usersMapper.entityToDto(usersRepository.saveAndFlush(usersMapper.dtoToEntity(usersDto)));
+	}
+
+	@Override
+	public List<UsersResponseDto> getUsers() {
+		return usersMapper.entityToDtos(usersRepository.findActiveUsers());
+	}
+
+	@Override
+	public UsersResponseDto getByUsername(String username) {
+		return usersMapper.entityToDto(usersRepository.findUser(username));
 	}
 
 }

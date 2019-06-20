@@ -21,7 +21,7 @@ public class SmUser {
 	@Embedded
 	private Profile profile;
 
-	private Timestamp joined;
+	private Timestamp joined = new Timestamp(System.currentTimeMillis());
 
 	@Column(nullable = false)
 	@Embedded

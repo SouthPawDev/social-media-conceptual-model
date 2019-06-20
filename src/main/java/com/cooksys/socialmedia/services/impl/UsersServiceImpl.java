@@ -40,9 +40,9 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public UsersResponseDto updateUser(UsersRequestDto usersDto) {
 		SmUser user = usersRepository.findUser(usersDto.getCredentials().getUsername());
-		//if (user.getCredentials().equals(usersDto.getCredentials())) {
+		if (user.getCredentials().getPassword().equals(usersDto.getCredentials().getPassword())) {
 			user.setProfile(usersDto.getProfile());
-	//}
+		}
 		usersRepository.saveAndFlush(user);
 		return usersMapper.entityToDto(user);
 	}

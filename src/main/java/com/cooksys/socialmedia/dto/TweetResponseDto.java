@@ -11,7 +11,7 @@ public class TweetResponseDto {
 
 	private String content;
 
-	private SmUser author;
+	private UsersResponseDto author;
 
 	private Timestamp posted;
 
@@ -32,11 +32,11 @@ public class TweetResponseDto {
 		this.content = content;
 	}
 
-	public SmUser getAuthor() {
+	public UsersResponseDto getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(SmUser author) {
+	public void setAuthor(UsersResponseDto author) {
 		this.author = author;
 	}
 

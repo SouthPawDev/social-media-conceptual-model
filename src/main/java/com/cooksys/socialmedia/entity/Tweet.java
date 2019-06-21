@@ -16,7 +16,7 @@ public class Tweet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	private boolean active = true;
 
 	@ManyToOne
@@ -34,6 +34,9 @@ public class Tweet {
 
 	@ManyToMany
 	private List<Hashtag> hashtag;
+
+	@ManyToMany
+	private List<SmUser> liked;
 
 	public Tweet() {
 
@@ -102,7 +105,13 @@ public class Tweet {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
-	
-	
+
+	public List<SmUser> getLiked() {
+		return liked;
+	}
+
+	public void setLiked(List<SmUser> liked) {
+		this.liked = liked;
+	}
 
 }

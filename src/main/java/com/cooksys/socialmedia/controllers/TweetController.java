@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cooksys.socialmedia.dto.TweetRequestDto;
 import com.cooksys.socialmedia.dto.TweetResponseDto;
 import com.cooksys.socialmedia.entity.Credentials;
+import com.cooksys.socialmedia.entity.SmUser;
 import com.cooksys.socialmedia.services.TweetService;
 
 @RestController
@@ -36,14 +37,24 @@ public class TweetController {
 		return tweetService.getTweets();
 	}
 
-	@GetMapping("/id")
-	public TweetResponseDto getTweetById(@PathVariable int id) {
+	@GetMapping("/{id}")
+	public TweetResponseDto getTweetById(@PathVariable Integer id) {
 		return tweetService.getTweetById(id);
 	}
 
-	@DeleteMapping("/id")
-	public TweetResponseDto deleteTweet(@RequestBody Credentials credentials, @PathVariable int id) {
+	@DeleteMapping("/{id}")
+	public TweetResponseDto deleteTweet(@RequestBody Credentials credentials, @PathVariable Integer id) {
 		return tweetService.deleteTweet(credentials, id);
+	}
+	
+	@PostMapping("/{id}/like")
+	public void likeTweet(@RequestBody Credentials credentials, @PathVariable Integer id) {
+		tweetService.likeTweet(credentials, id);
+	}
+	
+	@GetMapping("/{id}/likes")
+	public List<SmUser> getTweetLikes(@PathVariable Integer id){
+		return tweetService.getTweetLikes(id);
 	}
 
 }

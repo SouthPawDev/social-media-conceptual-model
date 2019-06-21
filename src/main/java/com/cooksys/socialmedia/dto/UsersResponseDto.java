@@ -6,18 +6,16 @@ import com.cooksys.socialmedia.entity.Profile;
 import com.cooksys.socialmedia.entity.Tweet;
 
 public class UsersResponseDto {
-	
+
 	private Profile profile;
-	
+
 	private boolean active = true;
-	
+
 	private List<Tweet> tweets;
 
 	public UsersResponseDto() {
 	}
 
-	
-	
 	public Profile getProfile() {
 		return profile;
 	}
@@ -41,8 +39,5 @@ public class UsersResponseDto {
 	public void setTweets(List<Tweet> tweets) {
 		this.tweets = tweets;
 	}
-	
-	
-	
 
 }

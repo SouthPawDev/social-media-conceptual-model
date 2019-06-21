@@ -16,11 +16,13 @@ public class Tweet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	private boolean active = true;
 
 	@ManyToOne
 	private SmUser author;
 
-	private Timestamp posted;
+	private Timestamp posted = new Timestamp(System.currentTimeMillis());
 
 	private String content;
 
@@ -92,5 +94,15 @@ public class Tweet {
 	public void setHashtag(List<Hashtag> hashtag) {
 		this.hashtag = hashtag;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+	
 
 }

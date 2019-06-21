@@ -61,4 +61,14 @@ public class UsersController {
 	public void unfollowUser(Credentials credentials, String username) {
 		usersService.unfollowUser(credentials, username);
 	}
+
+	@GetMapping("/{username}/followers")
+	public List<UsersResponseDto> getFollowers(@PathVariable String username) {
+		return usersService.getFollowers(username);
+	}
+	
+	@GetMapping("/{username}/following")
+	public List<UsersResponseDto> getFollowing(@PathVariable String username){
+		return usersService.getFollowing(username);
+	}
 }

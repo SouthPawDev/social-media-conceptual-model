@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.socialmedia.dto.TweetRequestDto;
 import com.cooksys.socialmedia.dto.TweetResponseDto;
+import com.cooksys.socialmedia.dto.UsersResponseDto;
 import com.cooksys.socialmedia.entity.Credentials;
-import com.cooksys.socialmedia.entity.SmUser;
 import com.cooksys.socialmedia.services.TweetService;
 
 @RestController
@@ -53,7 +53,7 @@ public class TweetController {
 	}
 	
 	@GetMapping("/{id}/likes")
-	public List<SmUser> getTweetLikes(@PathVariable Integer id){
+	public List<UsersResponseDto> getTweetLikes(@PathVariable Integer id){
 		return tweetService.getTweetLikes(id);
 	}
 

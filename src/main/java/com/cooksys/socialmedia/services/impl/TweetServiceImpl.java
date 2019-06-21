@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 
 import com.cooksys.socialmedia.dto.TweetRequestDto;
 import com.cooksys.socialmedia.dto.TweetResponseDto;
+import com.cooksys.socialmedia.dto.UsersResponseDto;
 import com.cooksys.socialmedia.entity.Credentials;
 import com.cooksys.socialmedia.entity.SmUser;
 import com.cooksys.socialmedia.entity.Tweet;
 import com.cooksys.socialmedia.mapper.TweetMapper;
+import com.cooksys.socialmedia.mapper.UsersMapper;
 import com.cooksys.socialmedia.repository.TweetRepository;
 import com.cooksys.socialmedia.repository.UsersRepository;
 import com.cooksys.socialmedia.services.TweetService;
@@ -20,14 +22,15 @@ public class TweetServiceImpl implements TweetService {
 	private TweetRepository tweetRepository;
 	private TweetMapper tweetMapper;
 	private UsersRepository usersRepository;
+	private UsersMapper usersMapper;
 
-
-	public TweetServiceImpl(TweetRepository tweetRepository, TweetMapper tweetMapper, UsersRepository usersRepository) {
+	public TweetServiceImpl(TweetRepository tweetRepository, TweetMapper tweetMapper, UsersRepository usersRepository,
+			UsersMapper usersMapper) {
 		super();
 		this.tweetRepository = tweetRepository;
 		this.tweetMapper = tweetMapper;
 		this.usersRepository = usersRepository;
-		
+		this.usersMapper = usersMapper;
 	}
 
 	@Override
@@ -64,13 +67,13 @@ public class TweetServiceImpl implements TweetService {
 		SmUser user = usersRepository.findUser(credentials.getUsername());
 		tweet.getLiked().add(user);
 		tweetRepository.saveAndFlush(tweet);
-		
+
 	}
 
 	@Override
-	public List<SmUser> getTweetLikes(Integer id) {
+	public List<UsersResponseDto> getTweetLikes(Integer id) {
 		Tweet tweet = tweetRepository.findTweet(id);
-		return tweet.getLiked();
+		return usersMapper.entityToDtos(tweet.getLiked());
 	}
 
 }

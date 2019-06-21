@@ -5,6 +5,7 @@ import java.util.List;
 import com.cooksys.socialmedia.dto.UsersRequestDto;
 import com.cooksys.socialmedia.dto.UsersResponseDto;
 import com.cooksys.socialmedia.entity.Credentials;
+import com.cooksys.socialmedia.entity.SmUser;
 
 public interface UsersService {
 
@@ -21,5 +22,9 @@ public interface UsersService {
 	void followUser(Credentials credentials, String username);
 
 	void unfollowUser(Credentials credentials, String username);
+
+	List<UsersResponseDto> getFollowers(String username);
+
+	List<UsersResponseDto> getFollowing(String username);
 
 }

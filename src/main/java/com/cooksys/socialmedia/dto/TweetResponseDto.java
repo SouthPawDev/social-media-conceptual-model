@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import com.cooksys.socialmedia.entity.Hashtag;
-import com.cooksys.socialmedia.entity.SmUser;
 import com.cooksys.socialmedia.entity.Tweet;
 
 public class TweetResponseDto {

@@ -79,4 +79,16 @@ public class UsersServiceImpl implements UsersService {
 
 	}
 
+	@Override
+	public List<UsersResponseDto> getFollowers(String username) {
+		SmUser user = usersRepository.findUser(username);
+		return usersMapper.entityToDtos(user.getFollowers());
+	}
+
+	@Override
+	public List<UsersResponseDto> getFollowing(String username) {
+		SmUser user = usersRepository.findUser(username);
+		return usersMapper.entityToDtos(user.getFollowing());
+	}
+
 }

@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.cooksys.socialmedia.dto.TweetRequestDto;
 import com.cooksys.socialmedia.dto.TweetResponseDto;
+import com.cooksys.socialmedia.dto.UsersResponseDto;
 import com.cooksys.socialmedia.entity.Credentials;
-import com.cooksys.socialmedia.entity.SmUser;
 
 public interface TweetService {
 
@@ -19,6 +19,6 @@ public interface TweetService {
 
 	void likeTweet(Credentials credentials, Integer id);
 
-	List<SmUser> getTweetLikes(Integer id);
+	List<UsersResponseDto> getTweetLikes(Integer id);
 
 }
